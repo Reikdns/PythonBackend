@@ -1,7 +1,8 @@
 from fastapi import APIRouter
-
+import numpy
 from Entity.estudiante import Estudiante
 from DAL.estudiantes import Estudiantes
+from BLL.connection_manager import mydb
 
 router = APIRouter()
 
@@ -21,3 +22,6 @@ def guardar_estudiante(estudiante: Estudiante):
 @router.get("/filtrar")
 def filtrar(calificacion: int):
     return [estudiante.nombre for estudiante in Estudiantes if numpy.mean(estudiante.notas) >= calificacion]
+@router.get("/test_connection")
+def test():
+    return mydb.database
