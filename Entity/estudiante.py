@@ -33,6 +33,7 @@ class Estudiante(BaseModel):
 class EstudianteResponse(BaseModel):
     nombre: str = None
     identificacion: str = None
-    edad: int = None
+    fechaNacimiento: date
+    fechaIngreso: date
     sexo: str = None
     promedio: float = None
